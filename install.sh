@@ -1,6 +1,6 @@
 #!/bin/sh
 # C3.ai CLI installer script
-# Usage: curl -fsSL https://raw.githubusercontent.com/C3-CaseySiebel/c3cli-releases/main/install.sh | sh
+# Usage: curl -fsSL https://raw.githubusercontent.com/C3-CaseySiebel/c3cli-releases/master/install.sh | sh
 
 set -e
 
@@ -62,7 +62,7 @@ detect_platform() {
 
 # Get latest release version from GitHub
 get_latest_version() {
-    LATEST_URL="https://raw.githubusercontent.com/${REPO}/main/releases/latest"
+    LATEST_URL="https://raw.githubusercontent.com/${REPO}/master/releases/latest"
 
     if command -v curl >/dev/null 2>&1; then
         VERSION=$(curl -fsSL "$LATEST_URL" 2>/dev/null | tr -d '[:space:]')
@@ -82,7 +82,7 @@ get_latest_version() {
 # Download and install
 download_and_install() {
     TARBALL="c3cli-${PLATFORM}.tar.gz"
-    DOWNLOAD_URL="https://raw.githubusercontent.com/${REPO}/main/releases/${VERSION}/${TARBALL}"
+    DOWNLOAD_URL="https://raw.githubusercontent.com/${REPO}/master/releases/${VERSION}/${TARBALL}"
 
     info "Downloading from: $DOWNLOAD_URL"
 
