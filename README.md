@@ -13,7 +13,7 @@ A fast, native command-line tool for syncing C3.ai projects and managing environ
 ## Installation
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/C3-CaseySiebel/c3cli-releases/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/C3-CaseySiebel/c3cli-releases/master/install.sh | sh
 ```
 
 Verify the installation:
