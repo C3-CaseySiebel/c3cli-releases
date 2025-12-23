@@ -110,7 +110,7 @@ c3 auth [OPTIONS]
 | `-s, --server <URL>` | C3 server URL |
 | `-t, --token <TOKEN>` | Cache a token directly |
 | `-o, --oauth` | Authenticate via OAuth browser flow |
-| `-p, --port <PORT>` | OAuth callback port (default: 3737) |
+| `-p, --oauth-port <PORT>` | OAuth callback port (default: 3737) |
 | `-k, --workspace <PATH>` | Workspace for token scoping |
 | `--list` | List cached tokens |
 | `--clear` | Clear cached tokens |
@@ -136,6 +136,15 @@ c3 env <COMMAND> [OPTIONS]
 | `upgrade <NAME>` | Upgrade server version |
 | `versions` | List available server versions |
 
+Common flags for env commands:
+
+| Flag | Description |
+|------|-------------|
+| `-s, --server <URL>` | C3 cluster URL |
+| `-t, --token <TOKEN>` | Auth token |
+| `-W, --wait` | Wait for operation to complete |
+| `--oauth-port <PORT>` | OAuth callback port (default: 3737) |
+
 ### app
 
 Manage C3 applications in an environment.
@@ -153,6 +162,16 @@ c3 app <COMMAND> [OPTIONS]
 | `stop <NAME>` | Stop an application |
 | `terminate <NAME>` | Delete an application permanently |
 | `upgrade <NAME>` | Upgrade application |
+
+Common flags for app commands:
+
+| Flag | Description |
+|------|-------------|
+| `-s, --server <URL>` | C3 server URL |
+| `-t, --token <TOKEN>` | Auth token |
+| `--env <NAME>` | Environment name (required if server URL is cluster-level) |
+| `-W, --wait` | Wait for operation to complete |
+| `--oauth-port <PORT>` | OAuth callback port (default: 3737) |
 
 ### info
 
