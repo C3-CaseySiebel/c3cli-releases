@@ -181,6 +181,33 @@ Show workspace info and discovered packages.
 c3 info
 ```
 
+### seed
+
+Upsert all seed data from packages into the database. Seed data files are typically located in `packages/<pkg>/seed/` directories.
+
+```bash
+c3 seed [OPTIONS]
+```
+
+| Flag | Description |
+|------|-------------|
+| `-s, --server <URL>` | C3 server URL (dev URL or app URL) |
+| `-t, --token <TOKEN>` | Auth token |
+| `-a, --app <APP>` | App name (required if multiple apps, auto-detected otherwise) |
+| `-k, --workspace <DIR>` | Workspace directory for auto-detecting app |
+
+**Examples:**
+```bash
+# Auto-detect app from workspace packages
+c3 seed -s https://cluster/env/dev
+
+# Explicit app name
+c3 seed -s https://cluster/env/dev --app myapp
+
+# Direct app URL
+c3 seed -s https://cluster/env/myapp
+```
+
 ### update
 
 Update the CLI to the latest version.
