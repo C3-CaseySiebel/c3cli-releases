@@ -117,6 +117,38 @@ c3 auth [OPTIONS]
 
 Tokens are stored in `~/.c3cli/tokens.json` and scoped per workspace/server.
 
+### exec
+
+Execute JavaScript or TypeScript code on a C3 server.
+
+```bash
+c3 exec <CODE> [-- ARGS...]
+```
+
+| Flag | Description |
+|------|-------------|
+| `-s, --server <URL>` | C3 server URL |
+| `-t, --token <TOKEN>` | Auth token |
+| `--ts` | Execute as TypeScript (for inline code) |
+
+Examples:
+```bash
+# Inline JavaScript
+c3 exec "1 + 1"
+c3 exec "Surfboard.ping()"
+
+# Inline TypeScript
+c3 exec --ts "const x: number = 42; x"
+
+# From file (auto-detects .ts)
+c3 exec script.js
+c3 exec script.ts
+
+# With arguments (passed to function)
+c3 exec "(a, b) => a + b" -- 3 4
+c3 exec multiply.js -- 6 7
+```
+
 ### env
 
 Manage C3 environments on a cluster.
