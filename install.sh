@@ -31,6 +31,7 @@ error() {
 detect_platform() {
     OS="$(uname -s)"
     ARCH="$(uname -m)"
+    LIBC=""
 
     case "$OS" in
         Darwin)
@@ -38,6 +39,14 @@ detect_platform() {
             ;;
         Linux)
             OS="linux"
+            # Detect musl vs glibc (Alpine uses musl)
+            if ldd --version 2>&1 | grep -q musl; then
+                LIBC="-musl"
+                info "Detected musl libc (Alpine/musl-based distro)"
+            elif [ -f /etc/alpine-release ]; then
+                LIBC="-musl"
+                info "Detected Alpine Linux"
+            fi
             ;;
         *)
             error "Unsupported operating system: $OS"
@@ -56,7 +65,7 @@ detect_platform() {
             ;;
     esac
 
-    PLATFORM="${OS}-${ARCH}"
+    PLATFORM="${OS}-${ARCH}${LIBC}"
     info "Detected platform: $PLATFORM"
 }
 
